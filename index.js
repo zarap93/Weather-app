@@ -125,6 +125,11 @@ function showHumidity(response) {
   currentHumidity.innerHTML = `${humidity}%`;
 }
 
+function showPrecipitation(response) {
+  let currentPrecipitation = document.querySelector("#current-precipitation");
+  let humidity = Math.round(response.data.rain["1h"]);
+  currentPrecipitation.innerHTML = `${precipitation}%`;
+}
 function showWeather(response) {
   //console.log(response);
   let currentWeather = document.querySelector("#weather");
