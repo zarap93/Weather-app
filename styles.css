@@ -1,0 +1,103 @@
+.container {
+  margin: 30px auto;
+  border: 1px black;
+  width: 45%;
+  display: block;
+}
+
+form {
+  margin-top: 0;
+  width: 100%;
+}
+
+input.form-control {
+  flex: 1;
+  margin-right: 10px;
+}
+
+h2 {
+  margin: 15px 0;
+  color: #6c757d;
+}
+.time {
+  margin-bottom: 30px;
+  color: #6c757d;
+}
+
+#weather {
+  color: #6c757d;
+}
+
+.fa-circle {
+  color: #fde168;
+}
+
+.current-emoji {
+  padding-left: 35px;
+}
+
+.mon {
+  margin-left: 20px;
+}
+
+.wed {
+  padding-left: 10px;
+}
+
+.fa-cloud-sun {
+  padding-left: 18px;
+}
+
+.fa-cloud-showers-heavy {
+  padding-left: 13px;
+}
+
+.col-4.current-temp,
+.current-emoji {
+  font-size: 50px;
+}
+.current-temp {
+  color: black;
+}
+
+.current-info {
+  padding: 10px;
+  margin-left: 15px;
+}
+
+.row {
+  color: #6c757d;
+}
+
+.temps {
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.time-of-day {
+  margin-top: 30px;
+  margin-left: 40px;
+}
+
+hr {
+  margin-top: 30px;
+}
+
+.days {
+  margin-top: 30px;
+  font-size: 20px;
+  padding-left: 4px;
+  border: 0;
+}
+
+.temp-emojis {
+  font-size: 40px;
+  padding-left: 5px;
+  margin-bottom: 15px;
+  margin-left: 13px;
+}
+
+.days,
+.high-low {
+  margin-left: 35px;
+}
