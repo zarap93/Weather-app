@@ -4,6 +4,7 @@ function refreshData(response) {
   console.log("Refreshing data with response");
   console.log(response);
   showTemperature(response);
+  showPrecipitation(response);
   showWindspeed(response);
   showHumidity(response);
   showWeather(response);
@@ -127,7 +128,8 @@ function showHumidity(response) {
 
 function showPrecipitation(response) {
   let currentPrecipitation = document.querySelector("#current-precipitation");
-  let humidity = Math.round(response.data.rain["1h"]);
+  console.log(response.data.rain["1h"]);
+  let precipitation = response.data.rain["1h"];
   currentPrecipitation.innerHTML = `${precipitation}%`;
 }
 function showWeather(response) {
