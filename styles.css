@@ -1,5 +1,5 @@
 .container {
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   border: 1px black;
   width: 45%;
   display: block;
@@ -100,4 +100,9 @@ hr {
 .days,
 .high-low {
   margin-left: 35px;
+}
+
+p {
+  text-align: center;
+  margin-top: 10px;
 }
