@@ -33,7 +33,7 @@ h2 {
 }
 
 .current-emoji {
-  padding-left: 35px;
+  padding-left: 38px;
 }
 
 .mon {
@@ -63,6 +63,10 @@ h2 {
 .current-info {
   padding: 10px;
   margin-left: 15px;
+}
+
+.current-wind {
+  margin-top: 15px;
 }
 
 .row {
