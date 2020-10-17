@@ -7,6 +7,7 @@ function refreshData(response) {
   showWindspeed(response);
   showHumidity(response);
   showWeather(response);
+  displayForecast(response);
   cityHeader.innerHTML = response.data.name;
 }
 
@@ -20,15 +21,23 @@ function fillDataFromPosition(position) {
   axios.get(url).then(refreshData);
 }
 
+let searchInput = document.querySelector("#search-city");
+let city = searchInput.value;
+
+function displayForecast(response) {
+  let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(refreshData);
+  console.log(response.data);
+}
+
 function fillDataFromSearch(event) {
   event.preventDefault();
-  let searchInput = document.querySelector("#search-city");
-  let city = searchInput.value;
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&units=metric`;
   axios.get(url).then(refreshData);
   console.log(url);
   cityHeader.innerHTML = searchInput.value;
 }
+
 let form = document.querySelector("#enter-city");
 let cityHeader = document.querySelector("#city-display");
 form.addEventListener("submit", fillDataFromSearch);
