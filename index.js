@@ -108,9 +108,15 @@ showTime();
 // metric.addEventListener("click", unitCelsius);
 
 function showTemperature(response) {
+  console.log(response.data);
   let showTemp = document.querySelector("#current-temp");
   let temperature = Math.round(response.data.main.temp);
+  let iconElement = document.querySelector("#icon");
   showTemp.innerHTML = `${temperature}°C`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function showWindspeed(response) {
@@ -125,12 +131,6 @@ function showHumidity(response) {
   currentHumidity.innerHTML = `${humidity}%`;
 }
 
-// function showPrecipitation(response) {
-// let currentPrecipitation = document.querySelector("#current-precipitation");
-//console.log(response.data.rain["1h"]);
-//let precipitation = Math.round(response.data.rain["1h"]);
-//currentPrecipitation.innerHTML = `${precipitation} mm`;
-//}
 function showWeather(response) {
   //console.log(response);
   let currentWeather = document.querySelector("#weather");
