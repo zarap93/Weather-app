@@ -20,22 +20,14 @@ function fillDataFromPosition(position) {
   axios.get(url).then(refreshData);
 }
 
-let searchInput = document.querySelector("#search-city");
-let city = searchInput.value;
-
-function displayForecast(response) {
-  console.log(response.data);
-  //let forecastElement = document.querySelector("#daily-forecast");
-}
-
 function fillDataFromSearch(event) {
+  let searchInput = document.querySelector("#search-city");
+  let city = searchInput.value;
   event.preventDefault();
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&units=metric`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(url).then(refreshData);
   console.log(url);
   cityHeader.innerHTML = searchInput.value;
-  url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(url).then(displayForecast);
 }
 
 let form = document.querySelector("#enter-city");
