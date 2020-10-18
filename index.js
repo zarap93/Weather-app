@@ -18,6 +18,8 @@ function fillDataFromPosition(position) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   console.log(position);
   axios.get(url).then(refreshData);
+  url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(url).then(displayForecast);
 }
 
 function displayForecast(response) {
@@ -68,7 +70,7 @@ let form = document.querySelector("#enter-city");
 let cityHeader = document.querySelector("#city-display");
 form.addEventListener("submit", fillDataFromSearch);
 
-function formatDate() {
+function formatDate(timestamp) {
   let now = new Date();
   let date = now.getDate();
   let year = now.getFullYear();
