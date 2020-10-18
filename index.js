@@ -21,7 +21,8 @@ function fillDataFromPosition(position) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  console.log(response.data.list[0]);
+  let forecastElement = document.querySelector("#daily-forecast");
 }
 
 function fillDataFromSearch(event) {

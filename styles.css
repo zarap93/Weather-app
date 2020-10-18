@@ -15,7 +15,7 @@ input.form-control {
   margin-right: 10px;
 }
 
-h2 {
+h5 {
   margin: 15px 0;
   color: #6c757d;
 }
@@ -28,12 +28,8 @@ h2 {
   color: #6c757d;
 }
 
-.fa-circle {
-  color: #fde168;
-}
-
-.current-emoji {
-  padding-left: 38px;
+.current-icon {
+  padding-left: 30px;
 }
 
 .mon {
