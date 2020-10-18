@@ -23,6 +23,19 @@ function fillDataFromPosition(position) {
 function displayForecast(response) {
   console.log(response.data.list[0]);
   let forecastElement = document.querySelector("#daily-forecast");
+  forecastElement.innerHTML = (
+    <div class="col-2">
+      <h6>Morning</h6>
+      <img
+        src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+        alt="Clear"
+        id="forecast-icon"
+      />
+      <div class="forecast-high-lows">
+        <strong>18°</strong> | 16°
+      </div>
+    </div>
+  );
 }
 
 function fillDataFromSearch(event) {
