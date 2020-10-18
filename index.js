@@ -20,6 +20,10 @@ function fillDataFromPosition(position) {
   axios.get(url).then(refreshData);
 }
 
+function displayForecast(response) {
+  console.log(response.data);
+}
+
 function fillDataFromSearch(event) {
   let searchInput = document.querySelector("#search-city");
   let city = searchInput.value;
@@ -28,6 +32,8 @@ function fillDataFromSearch(event) {
   axios.get(url).then(refreshData);
   console.log(url);
   cityHeader.innerHTML = searchInput.value;
+  url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+  axios.get(url).then(displayForecast);
 }
 
 let form = document.querySelector("#enter-city");
