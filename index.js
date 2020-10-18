@@ -95,7 +95,7 @@ function showDate(event, date) {
 }
 function showTime() {
   let currentTime = document.querySelector("#time");
-  currentTime.innerHTML = `${formatTime()} |`;
+  currentTime.innerHTML = `Last updated: ${formatTime()} EST |`;
 }
 
 showDate();
