@@ -23,19 +23,33 @@ function fillDataFromPosition(position) {
 function displayForecast(response) {
   console.log(response.data.list[0]);
   let forecastElement = document.querySelector("#daily-forecast");
-  forecastElement.innerHTML = (
+  let forecast = response.data.list[0];
+  forecastElement.innerHTML = `
     <div class="col-2">
-      <h6>Morning</h6>
+      <h6>${formatHours(forecast.dt * 1000)}</h6>
       <img
-        src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+        src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon
+        }@2x.png"
         alt="Clear"
         id="forecast-icon"
       />
       <div class="forecast-high-lows">
-        <strong>18°</strong> | 16°
+        <strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
+    forecast.main.temp_min
+  )}°
       </div>
     </div>
-  );
+    `;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  return `${hour}:00`;
 }
 
 function fillDataFromSearch(event) {
@@ -46,7 +60,7 @@ function fillDataFromSearch(event) {
   axios.get(url).then(refreshData);
   console.log(url);
   cityHeader.innerHTML = searchInput.value;
-  url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+  url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(url).then(displayForecast);
 }
 
