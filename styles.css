@@ -2,6 +2,7 @@
   margin: 30px auto 0 auto;
   border: 1px black;
   width: 45%;
+  max-width: 800px;
   display: block;
   font-family: "Franklin Gothic Medium", Arial, sans-serif;
 }
@@ -17,10 +18,11 @@ input.form-control {
 }
 
 h5 {
-  margin: 15px 0;
+  margin-top: 15px;
   color: #6c757d;
 }
 .time {
+  margin-top: 0;
   margin-bottom: 30px;
   color: #6c757d;
 }
@@ -31,22 +33,6 @@ h5 {
 
 .current-icon {
   padding-left: 30px;
-}
-
-.mon {
-  margin-left: 20px;
-}
-
-.wed {
-  padding-left: 10px;
-}
-
-.fa-cloud-sun {
-  padding-left: 18px;
-}
-
-.fa-cloud-showers-heavy {
-  padding-left: 13px;
 }
 
 .col-4.current-temp,
@@ -77,6 +63,10 @@ h5 {
 
 .time-of-day {
   margin-top: 20px;
+}
+
+#forecast-icon {
+  margin: 0;
 }
 
 p {
