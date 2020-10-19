@@ -24,10 +24,13 @@ function fillDataFromPosition(position) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.list[0]);
   let forecastElement = document.querySelector("#daily-forecast");
-  let forecast = response.data.list[0];
-  forecastElement.innerHTML = `
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    let forecast = response.data.list[index];
+    forecastElement.innerHTML += `
     <div class="col-2">
       <h6>${formatTime(forecast.dt * 1000)}</h6>
       <img
@@ -39,11 +42,11 @@ function displayForecast(response) {
       />
       <div class="forecast-high-lows">
         <strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
-    forecast.main.temp_min
-  )}°
+      forecast.main.temp_min
+    )}°
       </div>
-    </div>
-    `;
+    </div>`;
+  }
 }
 
 function fillDataFromSearch(event) {
