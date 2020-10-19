@@ -148,6 +148,8 @@ function displayFahrenheit(event) {
 function displayCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temp");
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
   temperatureElement.innerHTML = `${Math.round(celsiusTemp)}°`;
 }
 
