@@ -20,7 +20,7 @@ function fillDataFromPosition(position) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   console.log(position);
   axios.get(url).then(refreshData);
-  url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(url).then(displayForecast);
 }
 
@@ -35,7 +35,7 @@ function displayForecast(response) {
     <div class="col-2">
       <h6>${formatTime(forecast.dt * 1000)}</h6>
       <img
-        src="http://openweathermap.org/img/wn/${
+        src="https://openweathermap.org/img/wn/${
           forecast.weather[0].icon
         }@2x.png"
         alt="Clear"
@@ -58,7 +58,7 @@ function fillDataFromSearch(event) {
   axios.get(url).then(refreshData);
   console.log(url);
   cityHeader.innerHTML = searchInput.value;
-  url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+  url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(url).then(displayForecast);
 }
 
@@ -114,7 +114,7 @@ function showTemperature(response) {
   showTemp.innerHTML = `${temperature}°`;
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
 
