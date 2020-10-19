@@ -7,6 +7,7 @@ function refreshData(response) {
   showWindspeed(response);
   showHumidity(response);
   showWeather(response);
+  showTime(response);
   cityHeader.innerHTML = response.data.name;
 }
 
@@ -28,7 +29,7 @@ function displayForecast(response) {
   let forecast = response.data.list[0];
   forecastElement.innerHTML = `
     <div class="col-2">
-      <h6>${formatHours(forecast.dt * 1000)}</h6>
+      <h6>${formatTime(forecast.dt * 1000)}</h6>
       <img
         src="http://openweathermap.org/img/wn/${
           forecast.weather[0].icon
@@ -43,15 +44,6 @@ function displayForecast(response) {
       </div>
     </div>
     `;
-}
-
-function formatHours(timestamp) {
-  let date = new Date(timestamp);
-  let hour = date.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
-  return `${hour}:00`;
 }
 
 function fillDataFromSearch(event) {
@@ -70,10 +62,23 @@ let form = document.querySelector("#enter-city");
 let cityHeader = document.querySelector("#city-display");
 form.addEventListener("submit", fillDataFromSearch);
 
+function formatTime(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+
+  return `${hour}:${minute}`;
+}
+
 function formatDate(timestamp) {
   let now = new Date();
-  let date = now.getDate();
-  let year = now.getFullYear();
+  console.log(timestamp);
 
   let days = [
     "Sunday",
@@ -86,49 +91,15 @@ function formatDate(timestamp) {
   ];
   let day = days[now.getDay()];
 
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  let month = months[now.getMonth()];
-
-  let fullDate = `${day}, ${month} ${date}, ${year}`;
-  return fullDate;
-}
-function formatTime() {
-  let now = new Date();
-  let hour = now.getHours();
-
-  let minute = now.getMinutes();
-  if (minute < 10) {
-    minute = `0${minute}`;
-  }
-
-  let time = `${hour}:${minute}`;
-  return time;
+  return `${day}, ${formatTime(timestamp)}`;
 }
 
-function showDate(event, date) {
-  let currentDate = document.querySelector("#date");
-  currentDate.innerHTML = formatDate();
+function showTime(response) {
+  let currentTime = document.querySelector("#date-time");
+  currentTime.innerHTML = `Last updated: ${formatDate(
+    response.data.dt * 1000
+  )}`;
 }
-function showTime() {
-  let currentTime = document.querySelector("#time");
-  currentTime.innerHTML = `Last updated: ${formatTime()} EST |`;
-}
-
-showDate();
-showTime();
 
 // function unitFahrenheit() {
 //   currentFahrenheit.innerHTML = "64°";
@@ -169,9 +140,7 @@ function showHumidity(response) {
 }
 
 function showWeather(response) {
-  //console.log(response);
   let currentWeather = document.querySelector("#weather");
   let weather = response.data.weather[0].main;
-  //console.log(weather);
   currentWeather.innerHTML = `${weather}`;
 }
