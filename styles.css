@@ -17,6 +17,15 @@ input.form-control {
   margin-right: 10px;
 }
 
+.unit-temps .active {
+  color: black;
+  cursor: default;
+}
+
+.unit-temps .active:hover {
+  text-decoration: none;
+}
+
 h5 {
   margin-top: 15px;
   color: #6c757d;
@@ -31,8 +40,8 @@ h5 {
   color: #6c757d;
 }
 
-.current-icon {
-  padding-left: 30px;
+#icon {
+  margin-left: -20px;
 }
 
 .col-4.current-temp,
@@ -41,6 +50,7 @@ h5 {
 }
 .current-temp {
   color: black;
+  padding-top: 10px;
 }
 
 .current-info {
