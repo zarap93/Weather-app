@@ -1,5 +1,6 @@
 let apiKey = "689e969de90a91f7c9389015a9661d89";
 let celsiusTemp = null;
+let isInCelsius = true;
 
 function refreshData(response) {
   console.log("Refreshing data with response");
@@ -25,12 +26,14 @@ function fillDataFromPosition(position) {
 }
 
 function displayForecast(response) {
+  console.log("displaying forecast");
   let forecastElement = document.querySelector("#daily-forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
 
   for (let index = 0; index < 6; index++) {
     let forecast = response.data.list[index];
+    console.log(forecast);
     forecastElement.innerHTML += `
     <div class="col-2">
       <h6>${formatTime(forecast.dt * 1000)}</h6>
@@ -42,9 +45,9 @@ function displayForecast(response) {
         id="forecast-icon"
       />
       <div class="forecast-high-lows">
-        <strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
-      forecast.main.temp_min
-    )}°
+        <strong>${convertTemperature(
+          forecast.main.temp_max
+        )}°</strong> | ${convertTemperature(forecast.main.temp_min)}°
       </div>
     </div>`;
   }
@@ -141,8 +144,20 @@ function displayFahrenheit(event) {
   let temperatureElement = document.querySelector("#current-temp");
   celsius.classList.remove("active");
   fahrenheit.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
-  temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°`;
+  isInCelsius = false;
+  let fahrenheitTemperature = convertTemperature(celsiusTemp);
+  temperatureElement.innerHTML = `${fahrenheitTemperature}°`;
+}
+
+function convertTemperature(celsiusTemp) {
+  console.log(celsiusTemp);
+  if (isInCelsius) {
+    console.log(`returing a Celsius value`);
+    return Math.round(celsiusTemp);
+  } else {
+    console.log(`returing a F value`);
+    return Math.round((celsiusTemp * 9) / 5 + 32);
+  }
 }
 
 function displayCelsius(event) {
@@ -150,6 +165,7 @@ function displayCelsius(event) {
   let temperatureElement = document.querySelector("#current-temp");
   fahrenheit.classList.remove("active");
   celsius.classList.add("active");
+  isInCelsius = true;
   temperatureElement.innerHTML = `${Math.round(celsiusTemp)}°`;
 }
 

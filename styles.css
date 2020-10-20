@@ -75,8 +75,12 @@ h5 {
   margin-top: 20px;
 }
 
+#daily-forecast {
+  margin-left: 10px;
+}
+
 #forecast-icon {
-  width: 70px;
+  width: 100%;
 }
 
 p {
